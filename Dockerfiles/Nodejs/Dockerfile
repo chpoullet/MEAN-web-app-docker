@@ -1,5 +1,5 @@
 FROM node
-WORKDIR /usr/src/nodejs-app
+WORKDIR /home/nodejs-app
 ADD MEAN-web-app ./
 RUN npm install
 CMD ["node", "app.js"]
