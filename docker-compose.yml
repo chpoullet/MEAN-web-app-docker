@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+
+  database:
+    build:
+      context: ./Dockerfiles/database
+    container_name: database
+    restart: always
+    ports:
+      - 27017:27017
+
+
+  nodejs_app:
+    build:
+      context: ./Dockerfiles/Nodejs/
+    depends_on:
+      - database
+    container_name: nodejs_app
+    restart: always
+    ports:
+      - 3000:3000
+
+
+  nginx:
+    build:
+      context: ./Dockerfiles/Nginx/
+    container_name: nginx_app
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
