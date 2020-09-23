@@ -25,7 +25,11 @@ services:
     build:
       context: ./Dockerfiles/Nginx/
     container_name: nginx_app
+    depends_on:
+      - nodejs_app
     restart: always
+    volumes:
+      - ./Dockerfiles/Nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
       - 80:80
       - 443:443
